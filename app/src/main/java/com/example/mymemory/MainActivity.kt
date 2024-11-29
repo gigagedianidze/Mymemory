@@ -1,6 +1,7 @@
 package com.example.mymemory
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -57,7 +58,9 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(clRoot, "Invalid move!", Snackbar.LENGTH_LONG).show()
             return
         }
-        memoryGame.flipCard(position)
+        if (memoryGame.flipCard(position)) {
+            Log.i(TAG, "Found a match! Num pairs found: ${memoryGame.numPairsFound}")
+        }
         adapter.notifyDataSetChanged()
     }
 
